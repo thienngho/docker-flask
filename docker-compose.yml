@@ -4,7 +4,7 @@ services:
   nginx:
     restart: always
     build: ./nginx
-    image: challenge/nginx
+    image: challenge/nginx:latest
     ports:
       - "80:80"
       - "443:443"
@@ -14,4 +14,4 @@ services:
   web:
     restart: always
     build: ./web
-    image: challenge/web
+    image: challenge/web:latest
