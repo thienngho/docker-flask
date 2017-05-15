@@ -8,8 +8,9 @@ RUN apt-get update \
  && rm -r /var/lib/apt/lists/*
 
 # Add main NGINX config
-COPY nginx.conf /etc/nginx/
+RUN rm -f /etc/nginx/conf.d/default.conf
 RUN mkdir /etc/nginx/ssl
 COPY ssl/ /etc/nginx/ssl
+COPY nginx.conf /etc/nginx/
 
 COPY web.conf /etc/nginx/conf.d

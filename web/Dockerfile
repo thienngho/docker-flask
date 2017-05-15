@@ -1,9 +1,5 @@
-FROM alpine
-RUN apk add --no-cache bash py2-pip \
-	&& pip2 install --upgrade pip \
-	&& pip2 install flask
+FROM python
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+ENTRYPOINT ["uwsgi", "--http", "0.0.0.0:80", "--wsgi-file", "wsgi.py", "--callable", "app"]
